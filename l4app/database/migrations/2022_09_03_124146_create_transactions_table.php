@@ -17,10 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('psp_reference')->unique();
             $table->string('merchant_reference')->unique();
-            $table->string('account');
-            $table->timestamp('date');
             $table->float('amount');
-            $table->text('paymnt_method');
+            $table->text('payment_method');
             $table->string('status');
             $table->integer('risk_score');
             $table->timestamps();
