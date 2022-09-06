@@ -44,8 +44,13 @@ class TransactionController extends Controller
     public function sample(): string
     {
         $factory = new TransactionFactory();
-        $params = $factory->definition();
+        for ($i = 0; $i < 20; $i++){
+            $params = $factory->definition();
+            $url = "http://localhost/transaction/create?" . http_build_query($params) . "\r\n";
+            file_put_contents('siege_urls.txt', $url, FILE_APPEND);
+        }
 
-        return http_build_query($params);
+
+        return 'sample requests written to siege_urls.txt';
     }
 }
